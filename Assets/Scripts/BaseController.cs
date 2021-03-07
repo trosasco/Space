@@ -5,12 +5,12 @@ using UnityEngine;
 public class BaseController : MonoBehaviour
 {
     public float health = 3;
-    private Transform barricades;
+    public Transform barricades;
     
     // Start is called before the first frame update
     void Start()
     {
-        barricades = GetComponent<Transform>();
+        //barricades = GetComponent<Transform>();
     }
 
     // Update is called once per frame
@@ -24,6 +24,7 @@ public class BaseController : MonoBehaviour
         //If all barricades are gone, game is lost
         if (barricades.childCount == 0)
         {
+            Debug.Log("player dead for some reason");
             GameController.playerDead = true;
         }
     }
