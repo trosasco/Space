@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,9 +14,12 @@ public class PlayerController : MonoBehaviour
     public GameObject bullet;
     public Transform parentTransform;
     
+    public Text table;
+    
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine(showPointsTable());
         player = GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
     }
@@ -42,15 +46,21 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Debug.Log("spawn");
             spawnBullet();
         }
     }
 
     void spawnBullet()
     {
-
         Instantiate(bullet, parentTransform.position, parentTransform.rotation);
-        Debug.Log(bullet.transform.position.z);
+    }
+    
+    
+    IEnumerator showPointsTable()
+    {
+        table.gameObject.SetActive(true);
+        yield return new WaitForSeconds(10f);
+
+        table.gameObject.SetActive(false);
     }
 }
