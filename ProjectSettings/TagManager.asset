@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Bullet
   - Base
+  - Crab
+  - Squid
+  - Mothership
+  - Octopus
   layers:
   - Default
   - TransparentFX

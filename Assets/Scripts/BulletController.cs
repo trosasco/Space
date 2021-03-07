@@ -16,8 +16,10 @@ public class BulletController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        bullet.position += Vector3.up * speed;
-
+        //bullet.position += Vector3.up * speed;
+        //GetComponent<Rigidbody2D>().AddForce(Vector3.up *speed);
+        GetComponent<Rigidbody2D>().velocity = Vector3.up * speed;
+        
         //Destroy bullet if offscreen
         if (bullet.position.y >= 10)
         {

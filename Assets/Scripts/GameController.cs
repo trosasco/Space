@@ -7,13 +7,18 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
     public UIController ui;
+    public GameObject alienSpawn;
 
     public static bool playerDead = false;
+
+    private int score = 0;
+    private int highScore = 0;
+    
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine(startRoutine());
     }
 
     // Update is called once per frame
@@ -29,9 +34,27 @@ public class GameController : MonoBehaviour
         }
         catch (NullReferenceException e)
         {
-            Debug.Log("Nullreference");
+            Debug.Log(e);
         }
 
+    }
+
+    public void addScore(int x)
+    {
+        score += x;
+        ui.updateScore(score);
+
+        if (score > highScore)
+        {
+            highScore = score;
+            ui.updateHighScore(highScore);
+        }
+    }
+
+    IEnumerator startRoutine()
+    {
+        yield return new WaitForSeconds(8f);
+        alienSpawn.gameObject.SetActive(true);
     }
 
 }
