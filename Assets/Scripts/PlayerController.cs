@@ -60,13 +60,10 @@ public class PlayerController : MonoBehaviour
                 spawnBullet();
                 fired = Time.time + fireDelay;
             }
-
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                Debug.Log("Resart pressed");
-                gc.restart();
-                fired = Time.time + 10;
-            }
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            gc.restart();
         }
     }
 

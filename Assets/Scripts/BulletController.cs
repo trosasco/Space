@@ -33,21 +33,4 @@ public class BulletController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        /*if (other.CompareTag("Enemy"))
-        {
-            Destroy(other.gameObject);
-            Destroy(gameObject);
-        } else if (other.CompareTag("Barrier"))
-        {
-            Destroy(gameObject);
-        }*/
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

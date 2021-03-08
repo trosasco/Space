@@ -23,7 +23,7 @@ public class UIController : MonoBehaviour
         win.gameObject.SetActive(false);
         panel.SetActive(false);
         
-        //Sets HighScore.
+        //Sets high score
         updateHighScore(GameObject.Find("Global Control").GetComponent<GlobalControl>().highScore);
     }
 
@@ -82,7 +82,7 @@ public class UIController : MonoBehaviour
     IEnumerator showPointsTable()
     {
         table.gameObject.SetActive(true);
-        yield return new WaitForSeconds(8f);
+        yield return new WaitForSeconds(5f);
 
         table.gameObject.SetActive(false);
     }
