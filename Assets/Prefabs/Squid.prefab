@@ -123,3 +123,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 30
+  bullet: {fileID: 1934310622256259165, guid: b92e54fbdbfed8a4ea6a0de20e28ab0b, type: 3}
+  shoot: 0

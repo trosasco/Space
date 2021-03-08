@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class UIController : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class UIController : MonoBehaviour
     public Text score;
     public Text table;
     public Text highScore;
+    public GameObject panel;
     
     // Start is called before the first frame update
     void Start()
@@ -19,6 +21,10 @@ public class UIController : MonoBehaviour
         gameOver.gameObject.SetActive(false);
         restart.gameObject.SetActive(false);
         win.gameObject.SetActive(false);
+        panel.SetActive(false);
+        
+        //Sets HighScore.
+        updateHighScore(GameObject.Find("Global Control").GetComponent<GlobalControl>().highScore);
     }
 
     // Update is called once per frame
@@ -31,12 +37,14 @@ public class UIController : MonoBehaviour
     {
         gameOver.gameObject.SetActive(x);
         restart.gameObject.SetActive(x);
+        panel.SetActive(x);
     }
 
     public void showWin(bool x)
     {
         win.gameObject.SetActive(x);
         restart.gameObject.SetActive(x);
+        panel.SetActive(x);
     }
 
     public void updateScore(int x)

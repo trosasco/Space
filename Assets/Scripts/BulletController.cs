@@ -7,6 +7,7 @@ public class BulletController : MonoBehaviour
 {
     private Transform bullet;
     public float speed;
+    public bool dir = false;
     
     // Start is called before the first frame update
     void Start()
@@ -16,12 +17,17 @@ public class BulletController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //bullet.position += Vector3.up * speed;
-        //GetComponent<Rigidbody2D>().AddForce(Vector3.up *speed);
-        GetComponent<Rigidbody2D>().velocity = Vector3.up * speed;
-        
+        if (dir)
+        {
+            GetComponent<Rigidbody2D>().velocity = Vector3.up * speed;
+        }
+        else
+        {
+            GetComponent<Rigidbody2D>().velocity = Vector3.down * speed;
+        }
+
         //Destroy bullet if offscreen
-        if (bullet.position.y >= 10)
+        if (bullet.position.y >= 10 || bullet.position.y <= -5)
         {
             Destroy(gameObject);
         }

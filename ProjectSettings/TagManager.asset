@@ -10,6 +10,7 @@ TagManager:
   - Squid
   - Mothership
   - Octopus
+  - Enemy
   layers:
   - Default
   - TransparentFX

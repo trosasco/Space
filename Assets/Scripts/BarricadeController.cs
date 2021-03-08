@@ -26,10 +26,9 @@ public class BarricadeController : MonoBehaviour
         transform.localScale = scale;
     }
     
-
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Bullet")
+        if (other.gameObject.tag == "Bullet" || other.gameObject.tag == "Enemy")
         {
             health -= 0.5f;
             scale.x -= 1f;

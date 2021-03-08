@@ -2,14 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
     public UIController ui;
     public GameObject alienSpawn;
-
-    public static bool playerDead = false;
+    public GameObject player;
+    private GlobalControl glb;
 
     private int score = 0;
     private int highScore = 0;
@@ -18,24 +19,14 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        glb = GameObject.Find("Global Control").GetComponent<GlobalControl>();
+        highScore = glb.highScore;
         StartCoroutine(startRoutine());
     }
 
     // Update is called once per frame
     void Update()
     {
-        try
-        {
-            if (playerDead)
-            {
-                Time.timeScale = 0;
-                ui.showGameOver(true);
-            }
-        }
-        catch (NullReferenceException e)
-        {
-            Debug.Log(e);
-        }
 
     }
 
@@ -47,6 +38,7 @@ public class GameController : MonoBehaviour
         if (score > highScore)
         {
             highScore = score;
+            glb.highScore = highScore;
             ui.updateHighScore(highScore);
         }
     }
@@ -54,7 +46,50 @@ public class GameController : MonoBehaviour
     IEnumerator startRoutine()
     {
         yield return new WaitForSeconds(8f);
-        alienSpawn.gameObject.SetActive(true);
+        if (alienSpawn != null)
+        {
+            alienSpawn.gameObject.SetActive(true);
+        }
+
+        player.GetComponent<PlayerController>().allowInput = true;
     }
 
+    public void gameOver()
+    {
+        try
+        {
+                Time.timeScale = 0;
+                ui.showGameOver(true);
+        }
+        catch (NullReferenceException e)
+        {
+            Debug.Log(e);
+        }
+    }
+
+    public void win()
+    {
+        try
+        {
+            Time.timeScale = 0;
+            ui.showWin(true);
+        }
+        catch (NullReferenceException e)
+        {
+            Debug.Log(e);
+        }
+    }
+
+    public void restart()
+    {
+        try
+        {
+            Time.timeScale = 1;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+        catch (NullReferenceException e)
+        {
+            Debug.Log(e);
+        }
+    }
 }
