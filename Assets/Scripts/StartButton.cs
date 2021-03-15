@@ -12,7 +12,7 @@ public class StartButton : MonoBehaviour
     {
         if (startButton != null)
         {
-            Button btn = startButton.GetComponent<Button>();s
+            Button btn = startButton.GetComponent<Button>();
             btn.onClick.AddListener(startGame);   
         }
     }
