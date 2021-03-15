@@ -88,7 +88,6 @@ public class UIController : MonoBehaviour
 
     IEnumerator showCredits()
     {
-        Debug.Log("show credits");
         yield return new WaitForSeconds(3f);
         SceneManager.LoadScene("CreditsScene");
     }
