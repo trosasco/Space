@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
@@ -27,17 +28,13 @@ public class UIController : MonoBehaviour
         updateHighScore(GameObject.Find("Global Control").GetComponent<GlobalControl>().highScore);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void showGameOver(bool x)
     {
         gameOver.gameObject.SetActive(x);
         restart.gameObject.SetActive(x);
         panel.SetActive(x);
+
+        StartCoroutine(showCredits());
     }
 
     public void showWin(bool x)
@@ -45,6 +42,8 @@ public class UIController : MonoBehaviour
         win.gameObject.SetActive(x);
         restart.gameObject.SetActive(x);
         panel.SetActive(x);
+        
+        StartCoroutine(showCredits());
     }
 
     public void updateScore(int x)
@@ -85,5 +84,12 @@ public class UIController : MonoBehaviour
         yield return new WaitForSeconds(5f);
 
         table.gameObject.SetActive(false);
+    }
+
+    IEnumerator showCredits()
+    {
+        Debug.Log("show credits");
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene("CreditsScene");
     }
 }

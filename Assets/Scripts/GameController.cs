@@ -58,8 +58,7 @@ public class GameController : MonoBehaviour
     {
         try
         {
-                Time.timeScale = 0;
-                ui.showGameOver(true);
+            ui.showGameOver(true);
         }
         catch (NullReferenceException e)
         {
@@ -71,8 +70,8 @@ public class GameController : MonoBehaviour
     {
         try
         {
-            Time.timeScale = 0;
             ui.showWin(true);
+            
         }
         catch (NullReferenceException e)
         {
@@ -84,7 +83,6 @@ public class GameController : MonoBehaviour
     {
         try
         {
-            Time.timeScale = 1;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         catch (NullReferenceException e)
